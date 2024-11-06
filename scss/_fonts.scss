@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src:
+        local("JetBrains Mono"),
+        url("../fonts/JetBrains-Mono/JetBrainsMono-Medium.woff2") format("woff2"),
+        url("../fonts/JetBrains-Mono/JetBrainsMono-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src:
+        local("JetBrains Mono"),
+        url("../fonts/JetBrains-Mono/JetBrainsMono-Bold.woff2") format("woff2"),
+        url("../fonts/JetBrains-Mono/JetBrainsMono-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Suisse Intl";
+    src:
+        local("Suisse Intl"),
+        url("../fonts/Suisse-Intl/suisseintl.eot#?") format("eot"),
+        url("../fonts/Suisse-Intl/suisseintl.woff2") format("woff2"),
+        url("../fonts/Suisse-Intl/suisseintl.woff") format("woff"),
+        url("../fonts/Suisse-Intl/suisseintl.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}

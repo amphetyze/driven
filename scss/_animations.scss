@@ -1,0 +1,43 @@
+@keyframes car-line {
+    from {
+        transform: translateX(10%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes car {
+    0% {
+        transform: translateX(-90%);
+    }
+
+    50% {
+        transform: translate(130%);
+    }
+
+    70% {
+        transform: translate(250%);
+    }
+}
+
+@keyframes logo-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes loader-fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
