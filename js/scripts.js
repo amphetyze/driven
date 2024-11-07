@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-const startingTimeValue = '12:00:00'; 
+const startingTimeValue = '12:00:00';
 let timerInterval;
 let coins = parseFloat(localStorage.getItem('coins')) || 0;
 let endTime = localStorage.getItem('endTime') ? new Date(localStorage.getItem('endTime')) : null;
@@ -34,6 +34,9 @@ function updateCoins() {
 function startTimer() {
     if (!endTime) return;
 
+    // Set initial time display
+    updateTimerDisplay();
+
     timerInterval = setInterval(() => {
         const now = new Date();
         const timeLeft = endTime - now;
@@ -48,15 +51,7 @@ function startTimer() {
             return;
         }
 
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-        document.querySelector('.timer__text').textContent =
-            String(hours).padStart(2, '0') + ':' +
-            String(minutes).padStart(2, '0') + ':' +
-            String(seconds).padStart(2, '0');
-
+        updateTimerDisplay();
         localStorage.setItem('endTime', endTime);
     }, 1000);
 
@@ -64,6 +59,20 @@ function startTimer() {
     document.querySelector('.button').setAttribute('disabled', 'disabled');
     isButtonActive = true;
     localStorage.setItem('isButtonActive', isButtonActive);
+}
+
+function updateTimerDisplay() {
+    const now = new Date();
+    const timeLeft = endTime - now;
+
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    document.querySelector('.timer__text').textContent =
+        String(hours).padStart(2, '0') + ':' +
+        String(minutes).padStart(2, '0') + ':' +
+        String(seconds).padStart(2, '0');
 }
 
 document.querySelector('.button').addEventListener('click', (event) => {
@@ -74,12 +83,12 @@ document.querySelector('.button').addEventListener('click', (event) => {
         isButtonActive = false;
         localStorage.setItem('isButtonActive', isButtonActive);
         document.querySelector('.timer__text').textContent = startingTimeValue;
-        endTime = null; 
+        endTime = null;
         localStorage.removeItem('endTime');
     } else {
         updateCoins();
         const now = new Date();
-        endTime = new Date(now.getTime() + 12 * 3600 * 1000); 
+        endTime = new Date(now.getTime() + 12 * 3600 * 1000);
         localStorage.setItem('endTime', endTime);
         startTimer();
     }
@@ -87,6 +96,7 @@ document.querySelector('.button').addEventListener('click', (event) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('dom is loaded');
+    startTimer();
 
     document.querySelector('.header__coins').textContent = coins.toFixed(2);
 
